@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:water_tracker/custom_widgets/responsive_maker.dart';
 import 'package:water_tracker/screens/desktop_view.dart';
 import 'package:water_tracker/screens/mobile_view.dart';
@@ -11,7 +12,7 @@ class Main extends StatelessWidget
 {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: App(),
     );
