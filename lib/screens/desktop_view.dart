@@ -4,6 +4,7 @@ import 'package:water_tracker/controllers/water_controller.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:water_tracker/screens/screens_components/desktop_cloud.dart';
+import 'package:water_tracker/screens/screens_components/desktop_notification.dart';
 
 class DesktopView extends StatelessWidget {
   final WaterController waterController = Get.put(WaterController());
@@ -27,9 +28,11 @@ class DesktopView extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(DesktopHistory(),transition: Transition.cupertino);
+                        },
                         child: Text(
-                          "History",
+                          "Notifications",
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                       ),

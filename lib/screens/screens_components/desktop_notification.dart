@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:water_tracker/controllers/water_controller.dart';
+import 'package:fl_chart/fl_chart.dart';
+import 'dart:math';
+
 import 'package:water_tracker/screens/desktop_view.dart';
-import 'package:water_tracker/screens/screens_components/desktop_notification.dart';
-class DesktopCloud extends StatelessWidget{
-  WaterController controller=Get.put(WaterController());
+import 'package:water_tracker/screens/screens_components/desktop_cloud.dart';
+class DesktopHistory extends StatelessWidget{
+  WaterController controller =Get.put(WaterController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +28,10 @@ class DesktopCloud extends StatelessWidget{
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton(
                         onPressed: () {
-                          Get.to(DesktopHistory(),transition: Transition.cupertino);
+                          Get.to(DesktopView(),transition: Transition.cupertino);
                         },
                         child: Text(
-                          "Notifications",
+                          "Home",
                           style: TextStyle(fontSize: 20, color: Colors.black),
                         ),
                       ),
@@ -36,7 +39,9 @@ class DesktopCloud extends StatelessWidget{
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(DesktopCloud(),transition: Transition.cupertino);
+                        },
                         child: Text(
                           "Cloud",
                           style: TextStyle(fontSize: 20, color: Colors.black),
@@ -54,27 +59,32 @@ class DesktopCloud extends StatelessWidget{
               )
             ],
           ),
-          Container(
-            padding: EdgeInsets.all(20),
-            height: 280,
-            width: 500,
-            decoration: BoxDecoration(
-              border: Border.all(color: Colors.black,width: 4),
-              borderRadius: BorderRadius.circular(20),
 
-            ),
+          Text("Your Notifications",style: TextStyle(fontSize: 37,fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
+          SizedBox(height: 10,),
+          Container(
+            width: 650,
+            height: 400,
             child: Column(
               children: [
-                CircleAvatar(
-                  radius:40,
-                  backgroundImage: AssetImage(
-                      "assets/gamer.png",
-                  ),
-                ),
-                SizedBox(height: 10,),
-                Text("Hey Guys! I have drank ${controller.sum} glasses of water",style: TextStyle(fontSize: 23),),
-                SizedBox(height: 10,),
-                ElevatedButton(onPressed: (){Get.to(DesktopView(),transition: Transition.cupertino);}, child: Text("Upload to Cloud"))
+                Expanded(
+                 child: ListView.separated(
+                   itemCount: 20,
+                   itemBuilder: (context, index) {
+                     return ListTile(
+                       trailing: Icon(Icons.check),
+                       leading: CircleAvatar(
+                         backgroundImage: AssetImage("assets/man.png"),
+                       ),
+                       title: Text("Hey man! Time for water",style: TextStyle(fontWeight: FontWeight.bold),),
+                       subtitle: Text("12:00 AM"),
+                     );
+                   },
+                   separatorBuilder: (context, index) {
+                     return Divider(height: 0.5,);
+                   },
+                 ),
+                )
               ],
             ),
           )
