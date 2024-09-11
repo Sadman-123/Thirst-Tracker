@@ -7,6 +7,8 @@ class DesktopCloud extends StatelessWidget{
   WaterController controller=Get.put(WaterController());
   @override
   Widget build(BuildContext context) {
+    var mdw=MediaQuery.of(context).size.width;
+    var mdh=MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
@@ -15,8 +17,8 @@ class DesktopCloud extends StatelessWidget{
             children: [
               Image.asset(
                 "assets/logo.png",
-                height: 100,
-                width: 100,
+                height:  mdh*0.14,
+                width: mdw*0.1,
               ),
               Container(
                 child: Row(
@@ -29,7 +31,7 @@ class DesktopCloud extends StatelessWidget{
                         },
                         child: Text(
                           "Notifications",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                          style: TextStyle(fontSize: mdw*0.016, color: Colors.black),
                         ),
                       ),
                     ),
@@ -39,7 +41,7 @@ class DesktopCloud extends StatelessWidget{
                         onPressed: () {},
                         child: Text(
                           "Cloud",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                          style: TextStyle(fontSize: mdw*0.016, color: Colors.black),
                         ),
                       ),
                     ),
@@ -56,24 +58,23 @@ class DesktopCloud extends StatelessWidget{
           ),
           Container(
             padding: EdgeInsets.all(20),
-            height: 280,
-            width: 500,
+            height: mdh*0.44,
+            width: mdw*0.40,
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black,width: 4),
               borderRadius: BorderRadius.circular(20),
-
             ),
             child: Column(
               children: [
                 CircleAvatar(
-                  radius:40,
+                  radius:mdw*0.0285,
                   backgroundImage: AssetImage(
                       "assets/gamer.png",
                   ),
                 ),
-                SizedBox(height: 10,),
-                Text("Hey Guys! I have drank ${controller.sum} glasses of water",style: TextStyle(fontSize: 23),),
-                SizedBox(height: 10,),
+                SizedBox(height: mdh*0.04,),
+                Text("Hey Guys! I have drank ${controller.sum} glasses of water",style: TextStyle(fontSize: mdw*0.0167),),
+                SizedBox(height: mdh*0.04,),
                 ElevatedButton(onPressed: (){Get.to(DesktopView(),transition: Transition.cupertino);}, child: Text("Upload to Cloud"))
               ],
             ),

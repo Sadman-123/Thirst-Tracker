@@ -10,6 +10,8 @@ class DesktopHistory extends StatelessWidget{
   WaterController controller =Get.put(WaterController());
   @override
   Widget build(BuildContext context) {
+    var mdw=MediaQuery.of(context).size.width;
+    var mdh=MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         children: [
@@ -18,8 +20,8 @@ class DesktopHistory extends StatelessWidget{
             children: [
               Image.asset(
                 "assets/logo.png",
-                height: 100,
-                width: 100,
+                height: mdh*0.14,
+                width: mdw*0.1,
               ),
               Container(
                 child: Row(
@@ -32,7 +34,7 @@ class DesktopHistory extends StatelessWidget{
                         },
                         child: Text(
                           "Home",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                          style: TextStyle(fontSize: mdw*0.016, color: Colors.black),
                         ),
                       ),
                     ),
@@ -44,7 +46,7 @@ class DesktopHistory extends StatelessWidget{
                         },
                         child: Text(
                           "Cloud",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                          style: TextStyle(fontSize: mdw*0.016, color: Colors.black),
                         ),
                       ),
                     ),
@@ -59,12 +61,11 @@ class DesktopHistory extends StatelessWidget{
               )
             ],
           ),
-
-          Text("Your Notifications",style: TextStyle(fontSize: 37,fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
-          SizedBox(height: 10,),
+          Text("Your Notifications",style: TextStyle(fontSize: mdw*0.028,fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
+          SizedBox(height: mdh*0.038,),
           Container(
-            width: 650,
-            height: 400,
+            width: mdw*0.4,
+            height: mdh*0.7,
             child: Column(
               children: [
                 Expanded(

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:water_tracker/controllers/water_controller.dart';
-import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:water_tracker/screens/screens_components/desktop_cloud.dart';
 import 'package:water_tracker/screens/screens_components/desktop_notification.dart';
@@ -10,6 +9,8 @@ class DesktopView extends StatelessWidget {
   final WaterController waterController = Get.put(WaterController());
   @override
   Widget build(BuildContext context) {
+    var mdw=MediaQuery.of(context).size.width;
+    var mdh=MediaQuery.of(context).size.height;
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -19,8 +20,8 @@ class DesktopView extends StatelessWidget {
             children: [
               Image.asset(
                 "assets/logo.png",
-                height: 100,
-                width: 100,
+                height: mdh*0.14,
+                width: mdw*0.1,
               ),
               Container(
                 child: Row(
@@ -33,7 +34,7 @@ class DesktopView extends StatelessWidget {
                         },
                         child: Text(
                           "Notifications",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                          style: TextStyle(fontSize: mdw*0.016, color: Colors.black),
                         ),
                       ),
                     ),
@@ -45,7 +46,7 @@ class DesktopView extends StatelessWidget {
                         },
                         child: Text(
                           "Cloud",
-                          style: TextStyle(fontSize: 20, color: Colors.black),
+                          style: TextStyle(fontSize: mdw*0.016, color: Colors.black),
                         ),
                       ),
                     ),
@@ -64,26 +65,32 @@ class DesktopView extends StatelessWidget {
             children: [
               Container(
                 margin: EdgeInsets.all(10),
-                width: 430,
-                height: 500,
+                width: mdw*0.355,
+                height: mdh*0.82,
                 child: Column(
                   children: [
                     Text(
                       "Track your Water Sip!",
-                      style: TextStyle(fontSize: 40, fontWeight: FontWeight.w800),
+                      style: TextStyle(fontSize: mdw*0.025, fontWeight: FontWeight.w800),
                     ),
                     SizedBox(
-                      height: 10,
+                      height: mdh*0.04,
                     ),
-                    TextField(
-                      controller: waterController.ct,
-                      decoration: InputDecoration(
-                        hintText: "How much Glasses of Water you Drank?",
-                        border: OutlineInputBorder(),
+                    Container(
+                      margin: EdgeInsets.only(
+                        left: 80,
+                        right: 80
+                      ),
+                      child: TextField(
+                        controller: waterController.ct,
+                        decoration: InputDecoration(
+                          hintText: "How much Glasses of Water?",
+                          border: OutlineInputBorder(),
+                        ),
                       ),
                     ),
                     SizedBox(
-                      height: 9,
+                      height: mdw*0.012,
                     ),
                     ElevatedButton(
                       onPressed: () {
@@ -93,29 +100,32 @@ class DesktopView extends StatelessWidget {
                     ),
                     Expanded(
                       child: Obx(
-                            () => ListView.builder(
-                          itemCount: waterController.arr.length,
-                          itemBuilder: (context, index) {
-                            return ListTile(
-                              title: Text(
-                                "${waterController.arr[index]['item']} glasses of water",
-                                style: TextStyle(fontWeight: FontWeight.bold),
-                              ),
-                              subtitle: Text(
-                                  "${waterController.arr[index]['time']} ${waterController.arr[index]['date']}"),
-                              leading: Image.asset(
-                                "assets/water.png",
-                                height: 40,
-                              ),
-                              trailing: IconButton(
-                                onPressed: () {
-                                  waterController.water_delete(index);
-                                },
-                                icon: Icon(Icons.delete),
-                              ),
-                            );
-                          },
-                        ),
+                            () => ListView.separated(
+                              itemCount: waterController.arr.length,
+                              itemBuilder: (context, index) {
+                                return ListTile(
+                                  title: Text(
+                                    "${waterController.arr[index]['item']} glasses of water",
+                                    style: TextStyle(fontWeight: FontWeight.bold),
+                                  ),
+                                  subtitle: Text(
+                                      "${waterController.arr[index]['time']} ${waterController.arr[index]['date']}"),
+                                  leading: Image.asset(
+                                    "assets/water.png",
+                                    height: mdh*0.069,
+                                  ),
+                                  trailing: IconButton(
+                                    onPressed: () {
+                                      waterController.water_delete(index);
+                                    },
+                                    icon: Icon(Icons.delete),
+                                  ),
+                                );
+                              },
+                              separatorBuilder: (context, index) {
+                                return Divider();
+                              },
+                            )
                       ),
                     ),
                   ],
@@ -125,10 +135,9 @@ class DesktopView extends StatelessWidget {
                 child: Center(
                   child: Column(
                     children: [
-                      Obx(()=>Text(waterController.sum<8?"Fill me up!":"Awesome!!",style: TextStyle(fontSize: 50,fontWeight: FontWeight.w500),),),
-                      Obx(()=>Text(waterController.sum<8?"Drink atleast ${waterController.total_healthy_limit.value-waterController.sum.value} more glasses!":"You have drank  ${waterController.sum} glasses of water \nThats a good sign of great health",style: TextStyle(fontSize: 21,color: Colors.grey.shade600),),),
-                      Obx(
-                            () {
+                      Obx(()=>Text(waterController.sum<8?"Fill me up!":"Awesome!!",style: TextStyle(fontSize: mdw*0.0350,fontWeight: FontWeight.w500),),),
+                      Obx(()=>Text(waterController.sum<8?"Drink atleast ${waterController.total_healthy_limit.value-waterController.sum.value} more glasses!":"You have drank  ${waterController.sum} glasses of water \nThats a good sign of great health",style: TextStyle(fontSize: mdw*0.0178,color: Colors.grey.shade600),),),
+                      Obx(() {
                           double fillPercent = waterController.sum.value / 8;
                           double clipHeight = 400 * (1 - fillPercent);
                           return Stack(
@@ -136,14 +145,14 @@ class DesktopView extends StatelessWidget {
                             children: [
                               SvgPicture.asset(
                                 "assets/human.svg",
-                                height: 300,
+                                height: mdh*0.48,
                                 color: Colors.blue.withOpacity(0.2),
                               ),
                               ClipPath(
                                 clipper: WaterClipper(clipHeight),
                                 child: SvgPicture.asset(
                                   "assets/human.svg",
-                                  height: 300,
+                                  height: mdh*0.48,
                                   color: Colors.blue,
                                 ),
                               ),
@@ -175,7 +184,6 @@ class DesktopView extends StatelessWidget {
     );
   }
 }
-
 class WaterClipper extends CustomClipper<Path> {
   final double clipHeight;
   WaterClipper(this.clipHeight);
