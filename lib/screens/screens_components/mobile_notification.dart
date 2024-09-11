@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:water_tracker/screens/mobile_view.dart';
 import 'package:water_tracker/screens/screens_components/mobile_health.dart';
-
 import 'mobile_cloud.dart';
 class MobileNotification extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+    var mdw=MediaQuery.of(context).size.width;
+    var mdh=MediaQuery.of(context).size.height;
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Image.asset("assets/logo.png",height: 100,),
+        title: Image.asset("assets/logo.png",height:  mdh*0.16,),
       ),
       drawer: Drawer(
         child: ListView(
@@ -45,12 +46,13 @@ class MobileNotification extends StatelessWidget{
       ),
       body: Column(
         children: [
-          SizedBox(height: 30,),
-          Text("Your Notifications",style: TextStyle(fontSize: 27,fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
-          SizedBox(height: 20,),
+          SizedBox(height: mdh*0.045,),
+          Text("Your Notifications",style: TextStyle(fontSize: mdw*0.07,fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
+          SizedBox(height: mdh*0.045,),
           Container(
-            width: 650,
-            height: 600,
+            color: Colors.amber,
+            width: double.infinity,
+            height: mdh*0.72,
             child: Column(
               children: [
                 Expanded(
@@ -67,7 +69,7 @@ class MobileNotification extends StatelessWidget{
                       );
                     },
                     separatorBuilder: (context, index) {
-                      return Divider(height: 0.5,);
+                      return Divider();
                     },
                   ),
                 )
