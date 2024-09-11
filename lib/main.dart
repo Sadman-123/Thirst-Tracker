@@ -39,10 +39,3 @@ class App extends StatelessWidget {
         desktop_screen: DesktopView());
   }
 }
-class Bossx extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    // TODO: implement build
-    return MaterialApp();
-  }
-}
