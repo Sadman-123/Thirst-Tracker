@@ -8,10 +8,12 @@ class MobileCloud extends StatelessWidget{
   WaterController controller=Get.put(WaterController());
   @override
   Widget build(BuildContext context) {
+    var mdw=MediaQuery.of(context).size.width;
+    var mdh=MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Image.asset("assets/logo.png",height: 100,),
+        title: Image.asset("assets/logo.png",height: mdh*0.16,),
       ),
       drawer: Drawer(
         child: ListView(
@@ -46,8 +48,8 @@ class MobileCloud extends StatelessWidget{
       body: Container(
         padding: EdgeInsets.all(20),
         margin: EdgeInsets.all(21),
-        height: 280,
-        width: 500,
+        height: mdh*0.434,
+        width: mdw*0.90,
         decoration: BoxDecoration(
           border: Border.all(color: Colors.black,width: 4),
           borderRadius: BorderRadius.circular(20),
@@ -61,9 +63,9 @@ class MobileCloud extends StatelessWidget{
                 "assets/gamer.png",
               ),
             ),
-            SizedBox(height: 10,),
-            Text("Hey Guys! I have drank ${controller.sum} glasses of water",style: TextStyle(fontSize: 23),),
-            SizedBox(height: 10,),
+            SizedBox(height: mdh*0.03,),
+            Text("Hey Guys! I have drank ${controller.sum} glasses of water",style: TextStyle(fontSize: mdw*0.06),),
+            SizedBox(height: mdh*0.03,),
             ElevatedButton(onPressed: (){Get.offAll(MobileView(),transition: Transition.cupertino);}, child: Text("Upload to Cloud"))
           ],
         ),

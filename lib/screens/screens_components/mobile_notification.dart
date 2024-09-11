@@ -50,7 +50,6 @@ class MobileNotification extends StatelessWidget{
           Text("Your Notifications",style: TextStyle(fontSize: mdw*0.07,fontWeight: FontWeight.bold),textAlign: TextAlign.start,),
           SizedBox(height: mdh*0.045,),
           Container(
-            color: Colors.amber,
             width: double.infinity,
             height: mdh*0.72,
             child: Column(
