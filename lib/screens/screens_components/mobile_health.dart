@@ -11,10 +11,12 @@ class MobileHealth extends StatelessWidget{
 
    @override
   Widget build(BuildContext context) {
+     var mdw=MediaQuery.of(context).size.width;
+     var mdh=MediaQuery.of(context).size.height;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Image.asset("assets/logo.png",height: 100,),
+        title: Image.asset("assets/logo.png",height: mdh*0.16,),
       ),
       drawer: Drawer(
         child: ListView(
@@ -49,25 +51,26 @@ class MobileHealth extends StatelessWidget{
       body: Center(
         child: Column(
           children: [
-            Obx(()=>Text(waterController.sum<8?"Fill me up!":"Awesome!!",style: TextStyle(fontSize: 50,fontWeight: FontWeight.w500),),),
-            Obx(()=>Text(waterController.sum<8?"Drink atleast ${waterController.total_healthy_limit.value-waterController.sum.value} more glasses!":"You have drank  ${waterController.sum} glasses of water \nThats a good sign of great health",style: TextStyle(fontSize: 21,color: Colors.grey.shade600),),),
-            Obx(
-                  () {
+            Obx(()=>Text(waterController.sum<8?"Fill me up!":"Awesome!!",style: TextStyle(fontSize: mdw*0.11,fontWeight: FontWeight.w500),),),
+            SizedBox(height: mdh*0.025,),
+            Obx(()=>Text(waterController.sum<8?"Drink atleast ${waterController.total_healthy_limit.value-waterController.sum.value} more glasses!":"You have drank  ${waterController.sum} glasses of water \nThats a good sign of great health",style: TextStyle(fontSize: mdw*0.052,color: Colors.grey.shade600),),),
+            SizedBox(height: mdh*0.025,),
+            Obx(() {
                 double fillPercent = waterController.sum.value / 8;
-                double clipHeight = 400 * (1 - fillPercent);
+                double clipHeight = mdh*0.6 * (1 - fillPercent);
                 return Stack(
                   alignment: Alignment.bottomCenter,
                   children: [
                     SvgPicture.asset(
                       "assets/human.svg",
-                      height: 300,
+                      height: mdh*0.6,
                       color: Colors.blue.withOpacity(0.2),
                     ),
                     ClipPath(
                       clipper: WaterClipper(clipHeight),
                       child: SvgPicture.asset(
                         "assets/human.svg",
-                        height: 300,
+                        height: mdh*0.6,
                         color: Colors.blue,
                       ),
                     ),
