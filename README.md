@@ -1,7 +1,7 @@
 
 # Thristy Tracker
 
-Water Tracker is a simple Flutter app designed to help users track their daily water intake. The app is built for Android, iOS, and web platforms and is responsive across various screen sizes, from mobile devices to desktop screens.
+Thirsty Tracker is a simple Flutter app designed to help users track their daily water intake. The app is built for Android, iOS, and web platforms and is responsive across various screen sizes, from mobile devices to desktop screens.
 
 ## Features
 
