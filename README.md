@@ -19,12 +19,12 @@ Water Tracker is a simple Flutter app designed to help users track their daily w
 ## Screenshots
 
 ### Android
-| ![Android Screenshot 1](SS/s1.png) | ![Android Screenshot 2](SS/s2.png) | ![Android Screenshot 3](SS/s3.png) | ![Android Screenshot 4](SS/s4.png) |
-|------------------------------------|------------------------------------|------------------------------------|------------------------------------|
+| <img src="SS/s1.png" width="200"> | <img src="SS/s2.png" width="200"> | <img src="SS/s3.png" width="200"> | <img src="SS/s4.png" width="200"> |
+|-----------------------------------|-----------------------------------|-----------------------------------|-----------------------------------|
 
 ### iOS
-| ![iOS Screenshot 1](SS/s5.png) | ![iOS Screenshot 2](SS/s6.png) | ![iOS Screenshot 3](SS/s7.png) | ![iOS Screenshot 4](SS/s8.png) |
-|---------------------------------|---------------------------------|---------------------------------|---------------------------------|
+| <img src="SS/s5.png" width="200"> | <img src="SS/s6.png" width="200"> | <img src="SS/s7.png" width="200"> | <img src="SS/s8.png" width="200"> |
+|----------------------------------|-----------------------------------|-----------------------------------|-----------------------------------|
 
 ### Desktop
 ![Desktop Screenshot 1](SS/s9.png)
