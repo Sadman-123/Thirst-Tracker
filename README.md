@@ -30,26 +30,3 @@ Water Tracker is a simple Flutter app designed to help users track their daily w
 ![Desktop Screenshot 1](SS/s9.png)
 ![Desktop Screenshot 2](SS/s10.png)
 ![Desktop Screenshot 3](SS/s11.png)
-
-## How to Run
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/water-tracker-app.git
-   ```
-2. Navigate to the project directory:
-   ```bash
-   cd water-tracker-app
-   ```
-3. Install dependencies:
-   ```bash
-   flutter pub get
-   ```
-4. Run the app:
-   - For Android: `flutter run`
-   - For iOS: `flutter run`
-   - For Web: `flutter run -d chrome`
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
